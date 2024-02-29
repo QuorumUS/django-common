@@ -19,7 +19,7 @@ class Progress(object):
                 percents = ' [%d%%]' % int((self.count / float(self.total)) * 100)
             else:
                 percents = ''
-            print 'Processed %d %s%s' % (self.count, self.name, percents)
+            print('Processed %d %s%s' % (self.count, self.name, percents))
         if self.count == self.stop:
-            print 'Reached stop value %d' % self.stop
+            print('Reached stop value %d' % self.stop)
             sys.exit()

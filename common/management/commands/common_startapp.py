@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from optparse import make_option
 from os.path import dirname, realpath
 import os.path
@@ -22,10 +24,10 @@ class Command(BaseCommand):
 
 def copydir(src, dst):
     if not os.path.exists(dst):
-        print 'Creating directory: %s' % dst
+        print('Creating directory: %s' % dst)
         os.mkdir(dst)
     else:
-        print 'Directory already exists: %s' % dst
+        print('Directory already exists: %s' % dst)
 
     for fname in os.listdir(src):
         src_path = os.path.join(src, fname)
@@ -33,5 +35,5 @@ def copydir(src, dst):
         if os.path.isdir(src_path):
             copydir(src_path, dst_path)
         else:
-            print 'Creating file: %s' % dst_path
+            print('Creating file: %s' % dst_path)
             shutil.copy(src_path, dst_path)

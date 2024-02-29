@@ -79,6 +79,7 @@ set([(1, 'Sedan'), (2, 'Hatchback')])
 
 import re
 from random import choice
+from py3_utils import iteritems, itervalues
 
 class NotFound(Exception):
     "Raise when could not found item with specified parameters"
@@ -89,7 +90,7 @@ def setup_item(obj, value, label, **kwargs):
         obj.label = str(obj)
     else:
         obj.label = label
-    for ikey, ivalue in iter(kwargs.items()):
+    for ikey, ivalue in iteritems(kwargs):
         setattr(obj, ikey, ivalue)
     return obj
 
@@ -177,7 +178,7 @@ class MetaEnum(type):
         Return tuples of (value, label) for all enum.Item objects.
         """
 
-        return [(x.value, x.label) for x in iter(cls._items.values())]
+        return [(x.value, x.label) for x in itervalues(cls._items)]
 
     def values(self):
         """
@@ -216,7 +217,7 @@ class MetaEnum(type):
             """
             Return enum.Item which has attribute with specified value.
             """
-            for x in iter(cls._items.values()):
+            for x in itervalues(cls._items):
                 if getattr(x, attr) == value:
                     return x
             raise NotFound('Could not found item which %s attribute is %s' % (attr, value))
