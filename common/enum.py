@@ -79,7 +79,7 @@ set([(1, 'Sedan'), (2, 'Hatchback')])
 
 import re
 from random import choice
-from py3_utils import iteritems, itervalues
+from .py3_utils import iteritems, itervalues
 
 class NotFound(Exception):
     "Raise when could not found item with specified parameters"
