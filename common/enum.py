@@ -80,6 +80,7 @@ set([(1, 'Sedan'), (2, 'Hatchback')])
 import re
 from random import choice
 from .py3_utils import iteritems, itervalues
+import six
 
 class NotFound(Exception):
     "Raise when could not found item with specified parameters"
@@ -147,7 +148,7 @@ class MetaEnum(type):
         if '_choices' in attrs:
             attrs.update(items_from_choices(attrs['_choices']))
             del attrs['_choices']
-        for key, attr in attrs.items():
+        for key, attr in attrs.copy().items():
             if isinstance(attr, (IntItem, StrItem)):
                 attr.key = key
                 items[key] = attr
@@ -232,9 +233,8 @@ class MetaEnum(type):
 
 
 
-class Enum(object):
+class Enum(six.with_metaclass(MetaEnum, object)):
     NotFound = NotFound
-    __metaclass__ = MetaEnum
 
 
 def build(choices):
