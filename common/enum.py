@@ -148,7 +148,7 @@ class MetaEnum(type):
         if '_choices' in attrs:
             attrs.update(items_from_choices(attrs['_choices']))
             del attrs['_choices']
-        for key, attr in attrs.items():
+        for key, attr in attrs.copy().items():
             if isinstance(attr, (IntItem, StrItem)):
                 attr.key = key
                 items[key] = attr
