@@ -8,7 +8,7 @@ setup(
     author = 'Grigoriy Petukhov',
     author_email = 'lorien@lorien.name',
     url = 'http://bitbucket.org/lorien/django-common/',
-
+    install_requires=['six'],
     packages = find_packages(),
     include_package_data = True,
 
