@@ -8,7 +8,8 @@ Credits:
  * code for `set` tag is based on http://djangosnippets.org/snippets/215/
 """
 from cgi import parse_qsl
-from urllib import urlencode
+
+from future.moves.urllib.parse import urlencode
 
 from django import template
 from django.utils.encoding import smart_str

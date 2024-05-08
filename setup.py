@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 setup(
     name = 'django-common',
     description = 'A number of useful django shortcuts and helpers',
-    version = '0.1.52',
+    version = '0.1.53',
     author = 'Grigoriy Petukhov',
     author_email = 'lorien@lorien.name',
     url = 'http://bitbucket.org/lorien/django-common/',
-    install_requires=['six'],
+    install_requires=['six', 'future'],
     packages = find_packages(),
     include_package_data = True,
 
